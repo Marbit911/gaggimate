@@ -33,6 +33,7 @@ import { ProfileGroupTable } from './ProfileGroupTable';
 import { PhaseStatistics } from './PhaseStatistics';
 import { StatisticsShotCompareSection } from './StatisticsShotCompareSection';
 import { TrendChart } from './TrendChart';
+import { ActivityHeatmap } from './ActivityHeatmap';
 import { STATISTICS_SECTION_TITLE_CLASS } from './statisticsUi';
 import {
   buildShotCandidatePredicate,
@@ -547,7 +548,10 @@ function StatisticsDetailSectionPanel({
       )}
 
       {hasTrendStatistics && resolvedStatisticsDetailSection === 'trends' && (
-        <TrendChart key={`statistics-trends-${chartRunKey}`} trends={result.trends} />
+        <div className='space-y-4'>
+          <TrendChart key={`statistics-trends-${chartRunKey}`} trends={result.trends} />
+          <ActivityHeatmap trends={result.trends} />
+        </div>
       )}
 
       {hasProfileGroupStatistics && resolvedStatisticsDetailSection === 'profile' && (
